@@ -9,6 +9,7 @@ class MCP4821 < PiPiper::Spi
   def initialize(chip = CE0)
     PiPiper::Spi.begin(chip) do |spi|
       @spi = spi
+      @gain = "x1"
     end
   end
   
@@ -17,6 +18,9 @@ class MCP4821 < PiPiper::Spi
     first = command >> 8
     second = command & 0b0000000011111111
     @spi.write first, second
+  end
+  
+  def latch
   end
   
   def shdn
@@ -32,6 +36,10 @@ class MCP4821 < PiPiper::Spi
   
   def set_latch_pin(pin)
     @latch_pin = pin
+  end
+  
+  def set_out_gain(gain = "x1")
+    @gain = gain
   end
 
   if __FILE__ == $0
