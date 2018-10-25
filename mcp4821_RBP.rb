@@ -40,10 +40,6 @@ class MCP4821 < PiPiper::Spi
   def set_latch_pin(pin)
     @latch_pin = pin
   end
-  
-  def set_out_gain(gain = "x1")
-    @gain = gain
-  end
 
   if __FILE__ == $0
     mcp4821 = self.new CE1
