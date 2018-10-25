@@ -22,6 +22,17 @@ class MCP4821 < PiPiper::Spi
   def shdn
     @spi.write 0b0001000, 0b000000000
   end
+  
+  def hw_shdn
+  end
+  
+  def set_hw_shdn_pin(pin)
+    @hw_shdn_pin = pin
+  end
+  
+  def set_latch_pin(pin)
+    @latch_pin = pin
+  end
 
   if __FILE__ == $0
     mcp4821 = self.new CE1
