@@ -19,6 +19,10 @@ class MCP4821 < PiPiper::Spi
     second = command & 0b0000000011111111
     @spi.write first, second
   end
+  
+  def shdn
+    @spi.write 0b0001000, 0b000000000
+  end
 
   if __FILE__ == $0
     mcp4821 = self.new CE1
