@@ -13,8 +13,10 @@ class MCP4821 < PiPiper::Spi
     end
   end
   
-  def write(dac)
-    command = 0b0011000000000000 + dac
+  def write(dac, gain = @gain)
+    command = 0b0011
+    command -= 0b0010 if gain == "x2"
+    + dac
     first = command >> 8
     second = command & 0b0000000011111111
     @spi.write first, second
@@ -24,7 +26,7 @@ class MCP4821 < PiPiper::Spi
   end
   
   def shdn
-    @spi.write 0b0001000, 0b000000000
+    @spi.write 0, 0
   end
   
   def hw_shdn
