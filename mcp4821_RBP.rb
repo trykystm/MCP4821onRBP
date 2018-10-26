@@ -16,9 +16,8 @@ class MCP4821 < PiPiper::Spi
   def write(dac, gain = @gain)
     command = 0b0011
     command -= 0b0010 if gain == "x2"
-    + dac
-    first = command >> 8
-    second = command & 0b0000000011111111
+    first = command * 0b10000 + (dac & 0b111100000000) / 0b100000000
+    second = dac & 0b11111111
     @spi.write first, second
   end
   
