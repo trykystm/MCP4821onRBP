@@ -3,8 +3,8 @@ require 'pi_piper'
 
 class MCP4821 < PiPiper::Spi
   
-  CE0 = CHIP_SELECT_0
-  CE1 = CHIP_SELECT_1
+  CE0 = PiPiper::Spi::CHIP_SELECT_0
+  CE1 = PiPiper::Spi::CHIP_SELECT_1
   
   def initialize(chip = CE0)
     PiPiper::Spi.begin(chip) do |spi|
