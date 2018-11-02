@@ -18,6 +18,12 @@ class MCP4821 < PiPiper::Spi
     @spi.write first, second
   end
   
+  def set_without_latch
+  end
+  
+  def set_with_latch
+  end
+  
   def latch
   end
   
