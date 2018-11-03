@@ -30,3 +30,15 @@ sleep 5
 print 'set gain x2'
 mcp4821.set_out_gain 'x2'
 print 'write 2047'
+mcp4821.write 2047
+sleep 5
+print 'shut down'
+mcp4821.shdn
+sleep 5
+
+print 'set gain x1 and temporary x2'
+mcp4821.set_gain 'x1'
+mcp4821.write 2047 'x2'
+sleep 5
+print 'shut down'
+mcp4821.shdn
