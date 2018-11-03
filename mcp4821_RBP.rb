@@ -31,6 +31,7 @@ class MCP4821 < PiPiper::Spi
   def hw_shdn_release
   end
   
+
   def set_hw_shdn_pin(pin)
     @hw_shdn_pin = pin
   end
@@ -43,6 +44,7 @@ class MCP4821 < PiPiper::Spi
     @gain = gain
   end
 
+  
   if __FILE__ == $0
     mcp4821 = self.new CE1
     (0..4095).each do |dac|

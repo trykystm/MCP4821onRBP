@@ -23,4 +23,10 @@ print 'latch!'
 mcp4821.latch
 sleep 5
 print 'shut down'
+mcp4821.set_without_latch
 mcp4821.shdn
+sleep 5
+
+print 'set gain x2'
+mcp4821.set_out_gain 'x2'
+print 'write 2047'
