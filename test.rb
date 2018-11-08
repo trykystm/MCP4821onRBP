@@ -5,11 +5,22 @@ mcp4821.set_hw_shdn_pin xx
 mcp4821.set_out_gain 'x1'
 mcp4821.set_without_latch
 
-print 'write without latch'
-(0..4095).each do |dac|
-      mcp4821.write dac
-end
-sleep 5
+
+describe 'MCP4821' do
+  describe '#write' do
+    subject {mcp4821.write(dac)}
+    let(:mcp4821){MCP4821.new(PiPiper::Spi::CHIP_SELECT_0)}
+    context 'without latch' do
+      mcp4821.set_without_latch
+      (0..4095).each do |dac|
+        mcp4821.write dac
+      end
+      it {is_expected} 
+      sleep 5
+    end
+  end
+
+  describe '#
 
 print 'shut down'
 mcp4821.shdn
