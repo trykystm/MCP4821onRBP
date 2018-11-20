@@ -6,13 +6,13 @@ class MCP4821 < PiPiper::Spi
   def initialize(chip = PiPiper::Spi::CHIP_SELECT_0)
     PiPiper::Spi.begin(chip) do |spi|
       @spi = spi
-      @gain = "x1"
+      @gain = :x1
     end
   end
   
   def write(dac, gain = @gain)
     command = 0b0011
-    command -= 0b0010 if gain == "x2"
+    command -= 0b0010 if gain == :x2
     first = command * 0b10000 + (dac & 0b111100000000) / 0b100000000
     second = dac & 0b11111111
     @spi.write first, second
@@ -40,7 +40,7 @@ class MCP4821 < PiPiper::Spi
     @latch_pin = pin
   end
   
-  def set_out_gain(gain = "x1")
+  def set_out_gain(gain = :x1)
     @gain = gain
   end
 
