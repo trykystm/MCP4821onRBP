@@ -6,6 +6,7 @@ class MCP4821 < PiPiper::Spi
   def initialize(chip = PiPiper::Spi::CHIP_SELECT_0)
     PiPiper::Spi.begin(chip) do |spi|
       @spi = spi
+      @chip = chip
       @gain = :x1
     end
   end
@@ -42,6 +43,13 @@ class MCP4821 < PiPiper::Spi
   
   def set_out_gain(gain = :x1)
     @gain = gain
+  end
+  
+  def status
+    p @chip
+    p @gain
+    p @latch_pin
+    p @hw_shdn_pin
   end
 
   
