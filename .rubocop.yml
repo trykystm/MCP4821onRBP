@@ -1,0 +1,47 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'test.rb'
+
+Layout/IndentationWidth:
+  Width: 2
+
+Layout/IndentationStyle:
+  EnforcedStyle: spaces
+
+Layout/EndOfLine:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - 'mcp4821_RBP.rb'
+    - 'mcp4821_RBP_spec.rb'
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: line_count_based
+
+Style/DefWithParentheses:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Lint/RescueException:
+  Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - '*_spec.rb'
